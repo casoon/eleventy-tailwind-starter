@@ -8,7 +8,6 @@ const shortcodes = require("./config/shortcodes");
 const transforms = require("./config/transforms");
 
 const MinifyPlugin = require("./plugins/minifyPlugin");
-const NavigationPlugin = require("@11ty/eleventy-navigation");
 const AbsoluteUrlPlugin = require("./plugins/absoluteUrlPlugin");
 
 module.exports = function (eleventyConfig) {
@@ -35,7 +34,6 @@ module.exports = function (eleventyConfig) {
 
     // Plugins
     eleventyConfig.addPlugin(AbsoluteUrlPlugin, { base: require("./data/metadata.json").url });
-    eleventyConfig.addPlugin(NavigationPlugin);
     eleventyConfig.addPlugin(MinifyPlugin);
 
     // Layouts
@@ -47,7 +45,6 @@ module.exports = function (eleventyConfig) {
         './node_modules/alpinejs/dist/cdn.js': './assets/js/alpine.js',
     })
     eleventyConfig.setDataDeepMerge(true);
-    eleventyConfig.addWatchTarget("css/");
 
     return {
         templateFormats: ["njk"],
